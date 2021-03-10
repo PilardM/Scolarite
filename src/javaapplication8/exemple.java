@@ -6,6 +6,7 @@
 package javaapplication8;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,8 +31,6 @@ public class exemple extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
         jPasswordField2 = new javax.swing.JPasswordField();
         jTextField2 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
@@ -45,17 +44,7 @@ public class exemple extends javax.swing.JFrame {
         jPasswordField3 = new javax.swing.JPasswordField();
         jTextField3 = new javax.swing.JTextField();
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
-            }
-        });
 
         jPasswordField2.setText("jPasswordField2");
 
@@ -198,7 +187,7 @@ public class exemple extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 String PasswordTyped = new String(jPasswordField3.getPassword());
     if(jTextField3.getText().equalsIgnoreCase("admin") && PasswordTyped.equals("Azerty")){
-    connecter connect = new connecter();
+    Menu connect = new Menu();
     this.setVisible(false);
     connect.setVisible(true);
     connect.setLocationRelativeTo(null);
