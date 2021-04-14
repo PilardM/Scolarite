@@ -7,6 +7,7 @@ package javaapplication8;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,6 +32,8 @@ public class exemple extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jPasswordField2 = new javax.swing.JPasswordField();
         jTextField2 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
@@ -44,7 +47,17 @@ public class exemple extends javax.swing.JFrame {
         jPasswordField3 = new javax.swing.JPasswordField();
         jTextField3 = new javax.swing.JTextField();
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
 
         jPasswordField2.setText("jPasswordField2");
 
@@ -185,19 +198,23 @@ public class exemple extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-String PasswordTyped = new String(jPasswordField3.getPassword());
-    if(jTextField3.getText().equalsIgnoreCase("admin") && PasswordTyped.equals("Azerty")){
-    Menu connect = new Menu();
-    this.setVisible(false);
-    connect.setVisible(true);
-    connect.setLocationRelativeTo(null);
-    }
-    else{
-     JOptionPane.showMessageDialog(null, "Erreur de login !");
-     jTextField3.setText("");
-     jPasswordField3.setText("");
-     jPasswordField3.setBackground(Color.WHITE);
-     jTextField3.requestFocus();
+   
+                String login = new String (jTextField3.getText());
+                String PasswordTyped = new String (jPasswordField3.getPassword());
+                BDD m1 = new BDD();
+                try {
+                    String req = "SELECT COUNT(*) FROM utilisateur WHERE `login`='"+ login + "' AND `password`='"+ PasswordTyped + "'"; 
+                if (m1.verifLogin(req) == 1 ) {
+                        System.out.println("OUI");
+                        Menu1 getud = new Menu1();
+                    getud.setVisible(false);
+                    getud.setVisible(true);
+                    getud.setLocationRelativeTo(null);
+                }    
+                } catch (ClassNotFoundException a) {
+                    System.out.println("Connection Erreur");
+                } catch (SQLException a) {
+        System.out.println("Connection NON");
     }// TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
